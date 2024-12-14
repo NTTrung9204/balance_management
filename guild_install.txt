@@ -38,3 +38,74 @@ import CssBaseline from '@mui/material/CssBaseline'
 <CssBaseline />
 
 7. delete some unused file such as: app.css, index,css
+
+8. import theme to project
+
+[create theme.js in src]
+
+import { createTheme } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
+
+// Create a theme instance.
+const theme = createTheme({
+  cssVariables: true,
+  palette: {
+    primary: {
+      main: '#556cd6',
+    },
+    secondary: {
+      main: '#19857b',
+    },
+    error: {
+      main: red.A400,
+    },
+  },
+});
+
+export default theme;
+
+[in main.jsx]
+
+import { ThemeProvider } from '@mui/material/styles'
+import theme from './theme'
+
+[edit code in main.jsx, cover project in ThemeProvider]
+
+<ThemeProvider theme={theme}>
+  <CssBaseline />
+  <App />
+</ThemeProvider>
+
+9. toggle mode
+
+[in theme.js]
+
+const theme = createTheme({
+    colorSchemes: {
+        light: {
+            palette: {
+                primary: { main: "#556cd6" },
+                secondary: { main: "#19857b" },
+            },
+        },
+        dark: {
+            palette: {
+                primary: { main: "#90caf9" },
+                secondary: { main: "#f48fb1" },
+            },
+        }
+    },
+});
+
+[in App.js]
+
+function ModeToggle() {
+  const { mode, setMode } = useColorScheme()
+  return (
+    <Button onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}>
+      {mode === 'light' ? 'Dark' : 'Light'}
+    </Button>
+  )
+
+}
+
