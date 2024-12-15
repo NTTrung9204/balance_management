@@ -1,47 +1,56 @@
-import Button from '@mui/material/Button'
-import AccessAlarmIcon from '@mui/icons-material/AccessAlarm'
-import ThreeDRotation from '@mui/icons-material/ThreeDRotation'
-import HomeIcon from '@mui/icons-material/Home'
-import { pink } from '@mui/material/colors'
-import Typography from '@mui/material/Typography'
-import { useColorScheme } from '@mui/material'
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { AppProvider } from '@toolpad/core/AppProvider';
+import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 
-function ModeToggle() {
-  const { mode, setMode } = useColorScheme()
+import theme from './theme';
+import PageContent from './components/PageContent.jsx';
+
+const NAVIGATION = [
+  {
+    kind: 'header',
+    title: 'Main items',
+  },
+  {
+    segment: 'dashboard',
+    title: 'Dashboard',
+    icon: <DashboardIcon />,
+  },
+  {
+    segment: 'orders',
+    title: 'Orders',
+    icon: <ShoppingCartIcon />,
+  },
+];
+
+function DashboardLayoutAccountSidebar() {
+  const [pathname, setPathname] = React.useState('/dashboard');
+
+  const router = React.useMemo(() => {
+    return {
+      pathname,
+      searchParams: new URLSearchParams(),
+      navigate: (path) => setPathname(String(path)),
+    };
+  }, [pathname]);
+
   return (
-    <Button onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}>
-      {mode === 'light' ? 'Dark' : 'Light'}
-    </Button>
-  )
-
+    <AppProvider
+      navigation={NAVIGATION}
+      router={router}
+      theme={theme}
+    >
+      <DashboardLayout>
+        <PageContent pathname={pathname} />
+      </DashboardLayout>
+    </AppProvider>
+  );
 }
 
-function App() {
-  return (
-    <>
-      <ModeToggle />
+DashboardLayoutAccountSidebar.propTypes = {
+  window: PropTypes.func,
+};
 
-      <br />
-
-      <Typography variant="body2" color="text.secondary">Hello world</Typography>
-
-      <Button variant="contained">Hello world</Button>
-
-      <br />
-      <AccessAlarmIcon />
-      <ThreeDRotation />
-
-      <br />
-
-      <HomeIcon />
-      <HomeIcon color="primary" />
-      <HomeIcon color="secondary" />
-      <HomeIcon color="success" />
-      <HomeIcon color="action" />
-      <HomeIcon color="disabled" />
-      <HomeIcon sx={{ color: pink[500] }} />
-    </>
-  )
-}
-
-export default App
+export default DashboardLayoutAccountSidebar;
