@@ -109,7 +109,7 @@ function ModeToggle() {
 
 }
 
-10. restructur
+10. restructure
 
 [create pages folder in src]
 
@@ -119,3 +119,28 @@ function ModeToggle() {
 [create components folder in src]
 
 [create utils folder in src]
+
+11. change relative import to absulote import 
+
+[in vite.config.js]
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: [
+      {find: '~', replacement: '/src'}
+    ]
+  }
+})
+
+12. go to detail file 
+
+[create jsconfig.json at the same level with vite.config.js]
+
+{
+    "compilerOptions": {
+        "paths": {
+            "~/*": ["./src/*"]
+        }
+    }
+}
