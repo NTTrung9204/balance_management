@@ -1,0 +1,1 @@
+// random function to generate random number

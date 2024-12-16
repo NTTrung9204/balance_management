@@ -3,8 +3,7 @@ import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-
-function PageContent({ pathname }) {
+function StatisticPage() {
     return (
         <Box
             sx={{
@@ -15,13 +14,13 @@ function PageContent({ pathname }) {
                 textAlign: "center",
             }}
         >
-            <Typography>Dashboard content for {pathname}</Typography>
+            <Typography>Dashboard content for Statistic</Typography>
         </Box>
     );
 };
 
-PageContent.propTypes = {
+StatisticPage.propTypes = {
     pathname: PropTypes.string.isRequired,
 };
 
-export default PageContent;
+export default StatisticPage;

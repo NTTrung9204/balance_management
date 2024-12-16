@@ -109,3 +109,13 @@ function ModeToggle() {
 
 }
 
+10. restructur
+
+[create pages folder in src]
+
+-> create detail layouts for each page in separate folder
+-> create index.jsx, _id.jsx or subfolder if page is large
+
+[create components folder in src]
+
+[create utils folder in src]
