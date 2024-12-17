@@ -8,6 +8,7 @@ import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import theme from './theme';
 import BalancePage from './pages/Balance';
 import StatisticPage from './pages/Statistic';
+import AppBarTitle from './components/AppBar';
 
 const NAVIGATION = [
     {
@@ -27,8 +28,8 @@ const NAVIGATION = [
 ];
 
 const pageMapping = {
-  '/': <BalancePage />,
-  '/StatisticPage': <StatisticPage />
+    '/': <BalancePage />,
+    '/StatisticPage': <StatisticPage />
 };
 
 function DashboardLayoutAccountSidebar() {
@@ -43,17 +44,22 @@ function DashboardLayoutAccountSidebar() {
     }, [pathname]);
 
     return (
-      <AppProvider
-          navigation={NAVIGATION}
-          router={router}
-          theme={theme}
-      >
-          <DashboardLayout>
-              {pageMapping[pathname] || <BalancePage />}
-          </DashboardLayout>
-      </AppProvider>
-  );
-  
+        <AppProvider
+            navigation={NAVIGATION}
+            router={router}
+            theme={theme}
+        >
+            <DashboardLayout
+                slots={{
+                    appTitle: AppBarTitle,
+                }}
+            >
+                
+                {pageMapping[pathname] || <BalancePage />}
+            </DashboardLayout>
+        </AppProvider>
+    );
+
 }
 
 DashboardLayoutAccountSidebar.propTypes = {
