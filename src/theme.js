@@ -28,6 +28,46 @@ const theme = createTheme({
     cssVariables: {
         colorSchemeSelector: "data-toolpad-color-scheme",
     },
+    components: {
+        MuiDateRangePicker: {
+            styleOverrides: {
+                input: {
+                    fontSize: "0.875rem",
+                    padding: 0,
+                },
+                button: {
+                    padding: 0,
+                },
+            },
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                root:({theme}) => ({
+                    fontSize: "0.875rem",
+                    padding: 0,
+                    color: theme.palette.primary.main,
+                }),
+            },
+        },
+        MuiInputLabel: {
+            styleOverrides: {
+                root:({theme}) => ({
+                    color: theme.palette.primary.main,
+                }),
+            },
+        },
+        MuiOutlinedInput: {
+            styleOverrides: {
+                root:({theme}) => ({
+                    color: theme.palette.primary.main,
+                    '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: theme.palette.primary.main,
+                        border: '2px solid',
+                    },
+                }),
+            },
+        },
+    }
 });
 
 export default theme;
