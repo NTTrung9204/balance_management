@@ -7,6 +7,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useTheme } from '@mui/material/styles';
+import BalanceToggle from '~/components/BalanceInfor/BalanceToggle';
 
 
 function BalanceHeader() {
@@ -26,8 +27,8 @@ function BalanceHeader() {
                     gap: 1,
                     flexDirection: 'column',
                 }}>
-                <Typography sx={{color: theme.palette.primary.main}} variant="subtitle2">My balance</Typography>
-                <Typography sx={{fontWeight: 'bold'}} variant="h5">4,000,000vnđ</Typography>
+                <Typography sx={{ color: theme.palette.primary.main }} variant="subtitle2">My balance</Typography>
+                <BalanceToggle balance={4000000} />
             </Box>
             <Box>
                 <ThemeProvider theme={theme}>

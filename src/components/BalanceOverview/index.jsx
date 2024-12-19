@@ -1,1 +1,0 @@
-// show total balance, income, outcome in period of time
