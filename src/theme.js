@@ -1,5 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 import { red } from "@mui/material/colors";
+import { darken, lighten } from "@mui/system";
 
 const theme = createTheme({
     colorSchemes: {
@@ -7,12 +8,16 @@ const theme = createTheme({
             palette: {
                 primary: { main: "#556cd6" },
                 secondary: { main: "#19857b" },
+                customColor: { main: "#ff8a65", contrastText: "#000000" },
+                background: {default: "#FCFCFC", paper: "#F5F6FA"}
             },
         },
         dark: {
             palette: {
                 primary: { main: "#90caf9" },
                 secondary: { main: "#f48fb1" },
+                customColor: { main: "#ff8a65", contrastText: "#000000" },
+                background: { default: "#05070A", paper: "#0C1017" },
             },
         },
     },
@@ -42,7 +47,7 @@ const theme = createTheme({
         },
         MuiInputBase: {
             styleOverrides: {
-                root:({theme}) => ({
+                root: ({ theme }) => ({
                     fontSize: "0.875rem",
                     padding: 0,
                     color: theme.palette.primary.main,
@@ -51,23 +56,23 @@ const theme = createTheme({
         },
         MuiInputLabel: {
             styleOverrides: {
-                root:({theme}) => ({
+                root: ({ theme }) => ({
                     color: theme.palette.primary.main,
                 }),
             },
         },
         MuiOutlinedInput: {
             styleOverrides: {
-                root:({theme}) => ({
+                root: ({ theme }) => ({
                     color: theme.palette.primary.main,
-                    '& .MuiOutlinedInput-notchedOutline': {
+                    "& .MuiOutlinedInput-notchedOutline": {
                         borderColor: theme.palette.primary.main,
-                        border: '2px solid',
+                        border: "2px solid",
                     },
                 }),
             },
         },
-    }
+    },
 });
 
 export default theme;

@@ -20,18 +20,18 @@ function BalanceToggle({ balance }) {
                 gap: 1,
                 alignItems: 'center',
                 minHeight: '32px',
-                position: 'relative',
+                position: 'relative'
             }}
         >
             <Typography
                 sx={{ fontWeight: 'bold', display: 'flex', alignItems: 'center' }}
                 variant="h5"
             >
-                {isShow ? 
-                    <> 
+                {isShow ?
+                    <>
                         {balance} <AttachMoneyIcon />
                     </>
-                        :
+                    :
                     <>
                         {balance.toString().split('').map((item, index) => (
                             <FiberManualRecordIcon key={index} sx={{ fontSize: '1rem' }} />

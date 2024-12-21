@@ -9,6 +9,7 @@ import theme from './theme';
 import BalancePage from './pages/Balance';
 import StatisticPage from './pages/Statistic';
 import AppBarTitle from './components/AppBar';
+import { useTheme } from "@mui/material/styles";
 
 const NAVIGATION = [
     {
@@ -34,6 +35,7 @@ const pageMapping = {
 
 function DashboardLayoutAccountSidebar() {
     const [pathname, setPathname] = React.useState('/dashboard');
+    const customTheme = useTheme()
 
     const router = React.useMemo(() => {
         return {
@@ -43,11 +45,13 @@ function DashboardLayoutAccountSidebar() {
         };
     }, [pathname]);
 
+    console.log(customTheme.palette.background.default)
+
     return (
         <AppProvider
             navigation={NAVIGATION}
             router={router}
-            theme={theme}
+            theme={customTheme}
         >
             <DashboardLayout
                 slots={{
