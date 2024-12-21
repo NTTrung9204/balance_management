@@ -8,7 +8,8 @@ function BalanceSummaryItem({quantity, from, to, percent, title}) {
     const theme = useTheme();
     const dashboardContentColor = theme.palette.background.paper;
     return (
-        <Box sx={{ padding: '20px', backgroundColor: dashboardContentColor, borderRadius: '10px', flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ padding: '20px', backgroundColor: dashboardContentColor, borderRadius: '10px', flex: 1, display: 'flex',
+         flexDirection: 'column', gap: 2, border: "1px solid rgb(44, 53, 71)" }}>
             <Typography variant="subtitle2">
                 {title}
             </Typography>

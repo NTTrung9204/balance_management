@@ -19,7 +19,7 @@ function BalanceHeader() {
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 padding: "15px 20px",
-                borderBottom: '1px solid ' + theme.palette.primary.main,
+                borderBottom: '1px solid  rgb(44, 53, 71)',
                 flexWrap: 'wrap',
                 gap: 2,
             }}>

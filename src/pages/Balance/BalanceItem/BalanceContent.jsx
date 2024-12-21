@@ -1,15 +1,17 @@
 import Box from '@mui/material/Box';
 import BalanceSummary from '~/components/BalanceInfor/BalanceSummary';
+import BalanceChart from '~/components/BalanceInfor/BalanceChart';
 
 
 function BalanceContent() {
   return (
     <Box
         sx={{
-            padding: '15px',
+            padding: '25px',
         }}
     >
         <BalanceSummary />
+        <BalanceChart />
     </Box>
   );
 }
