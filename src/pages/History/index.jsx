@@ -1,20 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import HistoryFilter from './HistoryItem/HistoryFilter'
 
 function HistoryPage() {
     return (
         <Box
-            sx={{
-                py: 4,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                textAlign: "center",
-            }}
+            sx={{padding: '25px'}}
         >
-            <Typography>Dashboard content for Statistic</Typography>
+            <HistoryFilter/>
         </Box>
     );
 };

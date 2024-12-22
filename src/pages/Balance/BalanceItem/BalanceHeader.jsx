@@ -1,14 +1,8 @@
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import dayjs from 'dayjs';
-import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useTheme } from '@mui/material/styles';
 import BalanceToggle from '~/components/BalanceInfor/BalanceToggle';
-
+import DatePicker from '~/components/common/DatePicker'
 
 function BalanceHeader() {
     const theme = useTheme();
@@ -35,17 +29,7 @@ function BalanceHeader() {
                 <BalanceToggle balance={4000000} />
             </Box>
             <Box sx={{ display: 'flex', flex: 1, minWidth: '300px', justifyContent: 'center' }}>
-                <ThemeProvider theme={theme}>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DemoContainer components={['DateRangePicker']}>
-                            <DemoItem component="DateRangePicker">
-                                <DateRangePicker
-                                    defaultValue={[dayjs('2022-04-17'), dayjs('2022-04-21')]}
-                                />
-                            </DemoItem>
-                        </DemoContainer>
-                    </LocalizationProvider>
-                </ThemeProvider>
+                <DatePicker />
             </Box>
         </Box>
     );
