@@ -7,7 +7,7 @@ import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 
 import theme from './theme';
 import BalancePage from './pages/Balance';
-import StatisticPage from './pages/Statistic';
+import HistoryPage from './pages/History';
 import AppBarTitle from './components/AppBar';
 import { useTheme } from "@mui/material/styles";
 
@@ -22,7 +22,7 @@ const NAVIGATION = [
         icon: <DashboardIcon />,
     },
     {
-        segment: 'StatisticPage',
+        segment: 'HistoryPage',
         title: 'History',
         icon: <ShoppingCartIcon />,
     },
@@ -30,11 +30,11 @@ const NAVIGATION = [
 
 const pageMapping = {
     '/': <BalancePage />,
-    '/StatisticPage': <StatisticPage />
+    '/HistoryPage': <HistoryPage />
 };
 
 function DashboardLayoutAccountSidebar() {
-    const [pathname, setPathname] = React.useState('/dashboard');
+    const [pathname, setPathname] = React.useState('/');
     const customTheme = useTheme()
 
     const router = React.useMemo(() => {

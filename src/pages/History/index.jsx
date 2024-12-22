@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
-function StatisticPage() {
+function HistoryPage() {
     return (
         <Box
             sx={{
@@ -19,8 +19,8 @@ function StatisticPage() {
     );
 };
 
-StatisticPage.propTypes = {
+HistoryPage.propTypes = {
     pathname: PropTypes.string.isRequired,
 };
 
-export default StatisticPage;
+export default HistoryPage;
