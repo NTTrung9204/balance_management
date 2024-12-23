@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { useTheme, ThemeProvider } from "@mui/material/styles";
 
-
+import { Link } from 'react-router-dom';
 
 const rows = [
     {
@@ -84,7 +84,7 @@ const rows = [
 
 const paginationModel = { page: 0, pageSize: 10 };
 
-function HistoryBoard({ navigate }) {
+function HistoryBoard() {
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 70 },
@@ -115,7 +115,8 @@ function HistoryBoard({ navigate }) {
             renderCell: (params) => {
                 return (
                     <Button
-                        onClick={() => navigate(`/history/${params.id}`)}
+                        component={Link}
+                        to={`/history/${params.id}`}
                         variant="outlined"
                     >
                         View
@@ -127,7 +128,7 @@ function HistoryBoard({ navigate }) {
 
     const theme = useTheme();
     return (
-        <Box sx={{padding: "20px", backgroundColor: theme.palette.background.paper, marginTop: "20px"}}> 
+        <Box sx={{ padding: "20px", backgroundColor: theme.palette.background.paper, marginTop: "20px" }}>
             <h2 style={{ margin: 0 }}>History</h2>
             <Paper sx={{ height: 500, width: '100%' }}>
                 <DataGrid

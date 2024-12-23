@@ -144,3 +144,33 @@ export default defineConfig({
         }
     }
 }
+
+13. reate dom, navagate page by params url
+
+[install]
+
+npm install react-router-dom
+
+[render smoothly]
+
+import { AppProvider } from '@toolpad/core/react-router-dom'; //  core/AppProvider for single side page
+
+[usage]
+<Button
+    component={Link} // use Link like child component
+    to={`/history/${params.id}`} // navigate to route
+    variant="outlined"
+>
+    View
+</Button>
+
+<Link to="/">Home</Link>
+
+[define route/path]
+<Routes>
+    <Route path="/" element={<BalancePage />} />
+
+    <Route path="/history" element={<HistoryPage />} />
+
+    <Route path="/history/:id" element={<HistoryDetailPage />} />
+</Routes>
