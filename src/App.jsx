@@ -1,16 +1,19 @@
-import * as React from 'react';
 import PropTypes from 'prop-types';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { DashboardLayout } from '@toolpad/core/DashboardLayout';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { lazy, Suspense } from 'react'
 
-import BalancePage from './pages/Balance';
-import HistoryPage from './pages/History';
-import HistoryDetailPage from './pages/History/_id'; // Trang chi tiết lịch sử
 import AppBarTitle from './components/AppBar';
 import { useTheme } from "@mui/material/styles";
 import { AppProvider } from '@toolpad/core/react-router-dom';
+
+import LoadingProgress from './components/common/LoadingProgress'
+
+const BalancePage = lazy(() => import('./pages/Balance')); 
+const HistoryPage = lazy(() => import('./pages/History')); 
+const HistoryDetailPage = lazy(() => import('./pages/History/_id'));
 
 // Danh sách các item điều hướng
 const NAVIGATION = [
@@ -22,7 +25,6 @@ const NAVIGATION = [
         segment: '',
         title: 'Home',
         icon: <DashboardIcon />,
-        action: <DashboardIcon />,
     },
     {
         segment: 'history',
@@ -41,26 +43,17 @@ function DashboardLayoutAccountSidebar() {
 
     return (
         <Router>
-            <AppProvider 
-                navigation={NAVIGATION}
-                theme={customTheme}
-            >
+            <AppProvider navigation={NAVIGATION} theme={customTheme}>
                 <DashboardLayout
-                    slots={{
-                        appTitle: AppBarTitle,
-                    }}
+                    slots={{ appTitle: AppBarTitle }}
                 >
-                    {/* Điều hướng dựa trên URL */}
-                    <Routes>
-                        {/* Trang chính */}
-                        <Route path="/" element={<BalancePage />} />
-                        
-                        {/* Trang lịch sử */}
-                        <Route path="/history" element={<HistoryPage />} />
-                        
-                        {/* Chi tiết lịch sử, sử dụng tham số URL */}
-                        <Route path="/history/:id" element={<HistoryDetailPage />} />
-                    </Routes>
+                    <Suspense fallback={<LoadingProgress />}> 
+                        <Routes> 
+                            <Route path="/" element={<BalancePage />} /> 
+                            <Route path="/history" element={<HistoryPage />} /> 
+                            <Route path="/history/:id" element={<HistoryDetailPage />} /> 
+                        </Routes>
+                    </Suspense>
                 </DashboardLayout>
             </AppProvider>
         </Router>
