@@ -4,19 +4,16 @@ import Box from "@mui/material/Box";
 import HistoryFilter from './HistoryItem/HistoryFilter'
 import HistoryBoard from './HistoryItem/HistoryBoard'
 
-function HistoryPage() {
+function HistoryPage({navigate}) {
+    console.log("This is history page")
     return (
         <Box
             sx={{padding: '25px'}}
         >
             <HistoryFilter/>
-            <HistoryBoard />
+            <HistoryBoard navigate = {navigate} />
         </Box>
     );
-};
-
-HistoryPage.propTypes = {
-    pathname: PropTypes.string.isRequired,
 };
 
 export default HistoryPage;

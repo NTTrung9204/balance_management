@@ -6,16 +6,13 @@ import BalanceContent from "./BalanceItem/BalanceContent";
 
 
 function BalancePage() {
+    console.log("This is balance page")
     return (
         <Box>
             <BalanceHeader />
             <BalanceContent />
         </Box>
     );
-};
-
-BalancePage.propTypes = {
-    pathname: PropTypes.string.isRequired,
 };
 
 export default BalancePage;

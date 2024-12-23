@@ -6,40 +6,7 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { useTheme, ThemeProvider } from "@mui/material/styles";
 
-const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'expenditure_category', headerName: 'Expenditure Category', width: 220 },
-    {
-        field: 'flow_type', headerName: 'Flow Type', width: 200, renderCell: (params) => {
-            const amount = params.value;
-            return (
-                <Chip sx={{ fontWeight: "bold", minWidth: "100px" }} label={(amount > 0 ? "+" : "") + amount} variant="outlined" color={amount > 0 ? "success" : "error"} />
-            )
-        }
-    },
-    {
-        field: 'date',
-        headerName: 'Date',
-        width: 200,
-    },
-    {
-        field: 'time',
-        headerName: 'Time',
-        width: 200,
-    },
-    {
-        field: 'action',
-        headerName: 'Action',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 150,
-        renderCell: (ID) => {
-            return (
-                <Button variant='outlined'>View</Button>
-            )
-        },
-    },
-];
+
 
 const rows = [
     {
@@ -117,7 +84,47 @@ const rows = [
 
 const paginationModel = { page: 0, pageSize: 10 };
 
-function HistoryBoard() {
+function HistoryBoard({ navigate }) {
+
+    const columns = [
+        { field: 'id', headerName: 'ID', width: 70 },
+        { field: 'expenditure_category', headerName: 'Expenditure Category', width: 220 },
+        {
+            field: 'flow_type', headerName: 'Flow Type', width: 200, renderCell: (params) => {
+                const amount = params.value;
+                return (
+                    <Chip sx={{ fontWeight: "bold", minWidth: "100px" }} label={(amount > 0 ? "+" : "") + amount} variant="outlined" color={amount > 0 ? "success" : "error"} />
+                )
+            }
+        },
+        {
+            field: 'date',
+            headerName: 'Date',
+            width: 200,
+        },
+        {
+            field: 'time',
+            headerName: 'Time',
+            width: 200,
+        },
+        {
+            field: 'action',
+            headerName: 'Action',
+            sortable: false,
+            width: 150,
+            renderCell: (params) => {
+                return (
+                    <Button
+                        onClick={() => navigate(`/history/${params.id}`)}
+                        variant="outlined"
+                    >
+                        View
+                    </Button>
+                );
+            },
+        },
+    ];
+
     const theme = useTheme();
     return (
         <Box sx={{padding: "20px", backgroundColor: theme.palette.background.paper, marginTop: "20px"}}> 

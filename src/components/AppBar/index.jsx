@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material/styles';
 
 function AppBarTitle() {
+    console.log("AppBarTitle")
     const theme = useTheme();
 
     return (
