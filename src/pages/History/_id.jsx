@@ -11,7 +11,7 @@ function HistoryDetail({ id }) {
   return (
     <Box sx={{ padding: "25px", height: "100%" }}>
       <Box sx={{padding: "25px", borderRadius: "25px", backgroundColor: theme.palette.background.paper,
-        display: "flex", flexDirection: "column", gap: 2
+        display: "flex", flexDirection: "column", gap: 3
       }}>
         <HistoryDetailInfor />
         <HistoryDetailStatus amount={100000} />
