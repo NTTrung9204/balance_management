@@ -5,8 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField';
 
-function HistoryDetailDescription() {
-    const content = "abc\nxyz\nppp\ndddd\nkkkk"
+function HistoryDetailDescription({content}) {
     return (
         <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
             <Box sx={{ display: "flex", gap: 1, flex: 1, color: "#ccc", alignItems: "center" }}>
