@@ -24,9 +24,8 @@ function CopyComponent({textToCopy}) {
 
     return (
         <Tooltip
-            sx={{
-            }}
             onClick={handleCopyClick} title={copied ? "Copied!" : "Copy"} arrow>
+                
             <DoneIcon sx={{ display: copied ? "unset" : "none", fontSize: "15px" }} />
             <ContentCopyIcon sx={{
                 display: copied ? "none" : "unset",

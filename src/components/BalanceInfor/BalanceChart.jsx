@@ -14,6 +14,8 @@ import { useTheme, ThemeProvider } from "@mui/material/styles";
 
 import Box from '@mui/material/Box';
 import BalanceCreateNew from "./BalanceCreateNew";
+import Button from '@mui/material/Button';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 
 import * as React from 'react';
 
@@ -105,7 +107,12 @@ const BalanceChart = () => {
         }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <h2 style={{ margin: 0 }}>Cash flow</h2>
-                <BalanceCreateNew />
+                <BalanceCreateNew ChildrenComponent={
+                    ({ onClick }) =>
+                    (<Button onClick={onClick} size="medium" variant="outlined" endIcon={<AddCircleOutlineIcon />}>
+                        Create New
+                    </Button>)
+                } />
             </Box>
             <Line data={data} options={options} />
         </Box>

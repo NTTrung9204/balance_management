@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+
 
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
@@ -26,7 +26,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Box from '@mui/material/Box';
 
 import * as React from 'react';
-function BalanceCreateNew() {
+function BalanceCreateNew({ChildrenComponent}) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -45,7 +45,7 @@ function BalanceCreateNew() {
 
     return (
         <>
-            <Button onClick={handleClickOpen} size="medium" variant="outlined" endIcon={<AddCircleOutlineIcon />}>Create New</Button>
+            <ChildrenComponent onClick={handleClickOpen} />
             <Dialog
                 open={open}
                 onClose={handleClose}
