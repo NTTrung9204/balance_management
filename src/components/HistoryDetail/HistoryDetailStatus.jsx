@@ -7,8 +7,8 @@ import Chip from '@mui/material/Chip';
 
 function HistoryDetailStatus({amount}) {
     return (
-        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-            <Box sx={{ display: "flex", gap: 1, flex: 1, color: "#ccc", alignItems: "center" }}>
+        <Box sx={{ display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: 2 }}>
+            <Box sx={{ display: "flex", gap: 1, flex: 1, color: "#ccc", alignItems: "center", minWidth: "200px" }}>
                 <Tooltip title="ID transaction" arrow>
                     <HelpIcon fontSize="small" />
                 </Tooltip>
