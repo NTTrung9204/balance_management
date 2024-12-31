@@ -14,6 +14,7 @@ import LoadingProgress from './components/common/LoadingProgress'
 const BalancePage = lazy(() => import('./pages/Balance')); 
 const HistoryPage = lazy(() => import('./pages/History')); 
 const HistoryDetailPage = lazy(() => import('./pages/History/_id'));
+const CatagoryPage = lazy(() => import('./pages/Catagory'));
 
 // Danh sách các item điều hướng
 const NAVIGATION = [
@@ -29,6 +30,11 @@ const NAVIGATION = [
     {
         segment: 'history',
         title: 'History',
+        icon: <ShoppingCartIcon />,
+    },
+    {
+        segment: 'catagory',
+        title: 'Catogory',
         icon: <ShoppingCartIcon />,
     },
 ];
@@ -52,6 +58,7 @@ function DashboardLayoutAccountSidebar() {
                             <Route path="/" element={<BalancePage />} /> 
                             <Route path="/history" element={<HistoryPage />} /> 
                             <Route path="/history/:id" element={<HistoryDetailPage />} /> 
+                            <Route path="/catagory" element={<CatagoryPage />} /> 
                         </Routes>
                     </Suspense>
                 </DashboardLayout>

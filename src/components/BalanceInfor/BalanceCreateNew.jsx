@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 import MenuItem from '@mui/material/MenuItem';
@@ -24,9 +23,10 @@ import InputLabel from '@mui/material/InputLabel';
 import InputAdornment from '@mui/material/InputAdornment';
 
 import Box from '@mui/material/Box';
+import { useState, useEffect } from 'react';
 
 import * as React from 'react';
-function BalanceCreateNew({ChildrenComponent}) {
+function BalanceCreateNew({ ChildrenComponent }) {
     const [open, setOpen] = React.useState(false);
 
     const handleClickOpen = () => {
@@ -43,6 +43,48 @@ function BalanceCreateNew({ChildrenComponent}) {
         setOption(event.target.value);
     };
 
+    const [catagory, setCatagories] = useState([{_id: "trung"}])
+
+    useEffect(() => {
+        fetch('http://localhost:8017/v1/catalog')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                setCatagories(data)
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+    }, []);
+
+    const [isNew, setIsNew] = useState()
+
+    const createNewTransaction = (data) => {
+        fetch('http://localhost:8017/v1/transaction', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                setIsNew(true)
+            })
+            .catch(error => {
+                throw new Error(error);
+            });
+    }
+
     return (
         <>
             <ChildrenComponent onClick={handleClickOpen} />
@@ -56,6 +98,7 @@ function BalanceCreateNew({ChildrenComponent}) {
                         const formData = new FormData(event.currentTarget);
                         const formJson = Object.fromEntries(formData.entries());
                         console.log(formJson);
+                        createNewTransaction(formJson)
                         handleClose();
                     },
                 }}
@@ -85,13 +128,16 @@ function BalanceCreateNew({ChildrenComponent}) {
                                 id="catalog"
                                 label="Catalog"
                                 onChange={handleChange}
-                                defaultValue={1}
-                                name="Catalog"
+                                defaultValue={catagory[0]._id}
+                                name="catalogId"
                             >
-                                <MenuItem value={1}>Food & Dining</MenuItem>
-                                <MenuItem value={2}>Transportation</MenuItem>
-                                <MenuItem value={3}>Shopping</MenuItem>
-                                <MenuItem value={4}>Parking fees</MenuItem>
+                                {
+                                    catagory.map((catalogItem)=>{
+                                        return (
+                                            <MenuItem key={catalogItem._id} value={catalogItem._id}>{catalogItem.catalogName}</MenuItem>
+                                        )
+                                    })
+                                }
                             </Select>
                         </FormControl>
                     </Box>
