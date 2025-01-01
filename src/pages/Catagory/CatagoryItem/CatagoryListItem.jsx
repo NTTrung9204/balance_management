@@ -14,25 +14,23 @@ function CatagoryListItem({isNew}) {
         { field: 'catalogName', headerName: 'Expenditure Category', width: 220 },
         {
             field: 'income', headerName: 'Income', width: 200, renderCell: (params) => {
-                const amount = 100000;
                 return (
-                    <Chip sx={{ fontWeight: "bold", minWidth: "100px" }} label={"+" + amount} variant="outlined" color={"success"} />
+                    <Chip sx={{ fontWeight: "bold", minWidth: "100px" }} label={"+" + params.row.income} variant="outlined" color={"success"} />
                 )
             }
         },
         {
             field: 'expense', headerName: 'Expense', width: 200, renderCell: (params) => {
-                const amount = 30000;
                 return (
-                    <Chip sx={{ fontWeight: "bold", minWidth: "100px" }} label={"-" + amount} variant="outlined" color={"error"} />
+                    <Chip sx={{ fontWeight: "bold", minWidth: "100px" }} label={"-" + params.row.expense} variant="outlined" color={"error"} />
                 )
             }
         },
         {
             field: 'total', headerName: 'Total', width: 200, renderCell: (params) => {
-                const amount = 70000;
+                const total = params.row.total;
                 return (
-                    <Chip sx={{ fontWeight: "bold", minWidth: "100px" }} label={"+" + amount} variant="outlined" color={"success"} />
+                    <Chip sx={{ fontWeight: "bold", minWidth: "100px" }} label={(total > 0 ? "+" : "") + total} variant="outlined" color={total >= 0 ? "success" : "error"} />
                 )
             }
         },
@@ -57,7 +55,7 @@ function CatagoryListItem({isNew}) {
     const [rows, setRows] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:8017/v1/catalog')
+        fetch('http://localhost:8017/v1/catalog/statistics')
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
