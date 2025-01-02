@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import { useTheme, ThemeProvider } from "@mui/material/styles";
 import Paper from '@mui/material/Paper';
 import { DataGrid } from '@mui/x-data-grid';
+import { Link } from 'react-router-dom';
 
 const paginationModel = { page: 0, pageSize: 10 };
 
@@ -42,7 +43,8 @@ function CatagoryListItem({isNew}) {
             renderCell: (params) => {
                 return (
                     <Button
-                        to={`/history/${params.id}`}
+                        component={Link}
+                        to={`/catogory/${params.row._id}`}
                         variant="outlined"
                     >
                         Detail

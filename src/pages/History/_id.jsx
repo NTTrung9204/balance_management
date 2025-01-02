@@ -24,7 +24,7 @@ function HistoryDetail({ id }) {
         display: "flex", flexDirection: "column", gap: 3, position: "relative"
       }}>
         <HistoryDetailInfor title={"ID Transaction"} content={id_transaction} enableCopy={true} infor={"This is a ID of transaction"} />
-        <HistoryDetailStatus amount={100000} />
+        <HistoryDetailStatus title={"Type Flow"} amount={100000} />
         <HistoryDetailInfor title={"Expenditure Category"} content={"Food"} enableCopy={false} infor={"Type of service you use"} /> {/* expenditure_category */}
         <HistoryDetailInfor title={"Date"} content={currentDate} enableCopy={false} infor={"The date you pay this service"} /> { /* Date */}
         <HistoryDetailInfor title={"Time"} content={currentTime} enableCopy={false} infor={"The time you pay this service"} /> { /* Time */}
